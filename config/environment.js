@@ -4,8 +4,8 @@ module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'ember-app-with-relative-root-url',
     environment,
-    rootURL: '/',
-    locationType: 'history',
+    rootURL: '',
+    locationType: 'hash',
     EmberENV: {
       EXTEND_PROTOTYPES: false,
       FEATURES: {
@@ -29,6 +29,9 @@ module.exports = function (environment) {
   }
 
   if (environment === 'test') {
+    // Relative rootURL is not supported for tests
+    ENV.rootURL = '/';
+
     // Testem prefers this...
     ENV.locationType = 'none';
 
